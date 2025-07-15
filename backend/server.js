@@ -5,7 +5,7 @@ const session = require('express-session');
 const passport = require('passport');
 const cookieParser = require('cookie-parser');
 const connectDB = require('./config/db');
-const redisClient = require('./config/redis');
+// const redisClient = require('./config/redis');
 const errorHandler = require('./middlewares/errorMiddleware');
 const authRoutes = require('./routes/auth');
 require('./services/googleAuth'); // Google strategy setup
@@ -32,9 +32,9 @@ app.use(
     secret: process.env.JWT_SECRET,
     resave: false,
     saveUninitialized: false,
-    store: new (require('connect-redis').default)({
-      client: redisClient,
-    }),
+    // store: new (require('connect-redis').default)({
+    //   client: redisClient,
+    // }),
     cookie: {
       secure: false, // Set true if using https
       httpOnly: true,
