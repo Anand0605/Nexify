@@ -8,7 +8,7 @@ passport.use(
     {
       clientID: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-      callbackURL: '/api/auth/google/callback',
+      callbackURL: process.env.GOOGLE_CALLBACK_URL, // ✅ absolute URL
     },
     async (accessToken, refreshToken, profile, done) => {
       try {
@@ -23,12 +23,13 @@ passport.use(
           });
         }
 
-        return done(null, user); // ⬅️ pass user object to next
+        return done(null, user);
       } catch (err) {
-        return done(err, null); // ⬅️ handle error
+        return done(err, null);
       }
     }
   )
 );
+
 
 // ❌ No need for serializeUser or deserializeUser when using JWT
