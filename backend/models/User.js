@@ -5,7 +5,7 @@ const userSchema = new mongoose.Schema({
   name: { type: String },
   email: { type: String, unique: true, sparse: true },
   password: { type: String },
-  avatar: { type: String },
+  // avatar: { type: String },
   role: { type: String, default: 'user' },
   mobile: { type: String, unique: true, sparse: true },
   otp: { type: String },           // store OTP
